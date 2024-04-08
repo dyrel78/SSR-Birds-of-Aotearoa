@@ -1,0 +1,16 @@
+[x] Create a 404 “page not found” page and route	1
+[x] Replace .json with a SQL database	5
+[x] Each birds has it’s own page	2
+[x] Ability to delete each bird	2
+[x] Ability to update each bird	3
+[x] Ability to create new birds	3
+
+[x] Ability to upload images (for create/update)	4
+Total	20
+
+
+ISSUES
+[X] Created Bird not showing up on immediately, have to reload home page
+[X] Adding after deleting a bird, id's don't match up
+[X] Data Deficient Bird unable to be created
+[X] Handle photos with the same name

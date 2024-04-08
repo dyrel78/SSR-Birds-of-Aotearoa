@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <script src="/js/upload_image_preview.js" defer></script> -->
+
+</head>
+<body>
+    <%- include('partials/header') %>
+    <%- include('partials/sidebar', { status: status}) %>
+
+    <main id="createPage">
+        <%- include('partials/fieldset') %>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

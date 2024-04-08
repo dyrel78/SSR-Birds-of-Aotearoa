@@ -1,0 +1,113 @@
+<main class = "container">
+    <div> 
+        <form action="/birds/edit/<%=bird.bird_id%>" method="POST" enctype="multipart/form-data">
+        <!-- <form action="/birds/edit" method="POST" enctype="multipart/form-data"> -->
+            <input type="hidden" name="bird_id" value="<%= bird.bird_id %>">
+    
+            <fieldset>
+                <legend>Common Names</legend>
+                <label for="primary_name">Primary Name</label>
+                <input type="text" name="primary_name" value="<%-bird.primary_name%>" required="">
+    
+                <label for="english_name">English Name</label>
+                <input type="text" name="english_name" value="<%= bird.english_name %>" required="">
+            </fieldset>
+    
+            <fieldset>
+                <legend>Taxonomy</legend>
+                <label for="scientific_name">Scientific Name</label>
+                <input type="text" name="scientific_name" value="<%= bird.scientific_name %> " required="">
+    
+                <label for="order_name">Order</label>
+                <input type="text" name="order_name" value="<%= bird.order_name %>" required="">
+    
+                <label for="family">Family</label>
+                <input type="text" name="family" value="<%= bird.family %>" required="">
+            </fieldset>
+    
+            <fieldset>
+                <legend>Size</legend>
+                <label for="length">Length (cm)</label>
+                <input type="number" name="length"value="<%= bird.length %>">
+    
+                <label for="weight">Weight (g)</label>
+                <input type="number" name="weight" value="<%= bird.weight %>">
+            </fieldset>
+    
+            <fieldset>
+                <legend>Conservation</legend>
+                <label for="status_name">Status</label>
+                <select name="status_name"  id="status">
+
+                    <option value="Not Threatened" <% if (bird.status_name === 'Not Threatened') { %>selected<% } %>>Not Threatened</option>
+                    <option value="Naturally Uncommon" <% if (bird.status_name === 'Naturally Uncommon') { %>selected<% } %>>Naturally Uncommon</option>
+                    <option value="Relict" <% if (bird.status_name === 'Relict') { %>selected<% } %>>Relict</option>
+                    <option value="Recovering" <% if (bird.status_name === 'Recovering') { %>selected<% } %>>Recovering</option>
+                    <option value="Declining" <% if (bird.status_name === 'Declining') { %>selected<% } %>>Declining</option>
+                    <option value="Nationally Increasing" <% if (bird.status_name === 'Nationally Increasing') { %>selected<% } %>>Nationally Increasing</option>
+                    <option value="Nationally Vulnerable" <% if (bird.status_name === 'Nationally Vulnerable') { %>selected<% } %>>Nationally Vulnerable</option>
+                    <option value="Nationally Endangered" <% if (bird.status_name === 'Nationally Endangered') { %>selected<% } %>>Nationally Endangered</option>
+                    <option value="Nationally Critical" <% if (bird.status_name === 'Nationally Critical') { %>selected<% } %>>Nationally Critical</option>
+                    <option value="Extinct" <% if (bird.status_name === 'Extinct') { %>selected<% } %>>Extinct</option>
+                    <option value="Data Deficient" <% if (bird.status_name === 'Data Deficient') { %>selected<% } %>>Data Deficient</option>
+<!--                     
+                        <option>Not Threatened</option>
+                    
+                        <option>Naturally Uncommon</option>
+                    
+                        <option>Relict</option>
+                    
+                        <option>Recovering</option>
+                    
+                        <option>Declining</option>
+                    
+                        <option>Nationally Increasing</option>
+                    
+                        <option>Nationally Vulnerable</option>
+                    
+                        <option>Nationally Endangered</option>
+                    
+                        <option>Nationally Critical</option>
+                        <option> Extinct</option>
+                    
+                        <option>Data Deficient</option> -->
+                    
+                </select>
+            </fieldset>
+    
+            <fieldset>
+                <legend>Photo</legend>
+                <label for="photographer">Photo Credit</label>
+                <input type="text" name="photographer" value="<%= bird.photographer %>" required="">
+    
+                <label for="photo_upload">Upload New Photo</label>
+                <input type="file" name="photo_upload" id="photo_upload">
+    
+                <label for="photo_source">Photo Preview</label> 
+                <img id="upload_preview" src="/images/<%= bird.filename %>" alt="Photo of <%-bird.primary_name%>">
+            <input id="upload_source" type="text" name="photo_source" value="<%= bird.filename %>" readonly="readonly">
+            </fieldset>
+    
+            <button class="button" type="submit">Save Bird</button>
+
+
+            <script>
+                const fileInput = document.querySelector('#photo_upload');
+                if (fileInput) {
+                    fileInput.onchange = evt => {
+                        const [file] = fileInput.files
+                        if (file) {
+                            document.querySelector('#upload_preview').src = URL.createObjectURL(file);
+                            document.querySelector('#upload_source').value = file.name;
+                        }
+                    }
+                }
+            </script>
+        </form>
+
+    </div>
+
+
+
+
+</main>

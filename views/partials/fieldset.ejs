@@ -1,0 +1,93 @@
+<main class = "container">
+    <div> 
+        <form action="/birds/create" method="POST" enctype="multipart/form-data">
+            <!-- <input type="hidden" name="bird_id" value="30"> -->
+    
+            <fieldset>
+                <legend>Common Names</legend>
+                <label for="primary_name">Primary Name</label>
+                <input type="text" name="primary_name" value="" required="">
+    
+                <label for="english_name">English Name</label>
+                <input type="text" name="english_name" value="" required="">
+            </fieldset>
+    
+            <fieldset>
+                <legend>Taxonomy</legend>
+                <label for="scientific_name">Scientific Name</label>
+                <input type="text" name="scientific_name" value=" " required="">
+    
+                <label for="order_name">Order</label>
+                <input type="text" name="order_name" value="" required="">
+    
+                <label for="family">Family</label>
+                <input type="text" name="family" value="" required="">
+            </fieldset>
+    
+            <fieldset>
+                <legend>Size</legend>
+                <label for="length">Length (cm)</label>
+                <input type="number" name="length" value="">
+    
+                <label for="weight">Weight (g)</label>
+                <input type="number" name="weight" value="">
+            </fieldset>
+    
+            <fieldset>
+                <legend>Conservation</legend>
+                <label for="status_name">Status</label>
+                <select name="status_name" id="status">
+                    
+                        <option>Not Threatened</option>
+                        <option>Naturally Uncommon</option>                
+                        <option>Relict</option>
+                        <option>Recovering</option>
+                        <option>Declining</option>
+                        <option>Nationally Increasing</option>
+                        <option>Nationally Vulnerable</option>
+                        <option>Nationally Endangered</option>
+                        <option>Nationally Critical</option>
+                        <option>Extinct</option>
+                        <option>Data Deficient</option>
+                    
+                </select>
+            </fieldset>
+    
+            <fieldset>
+                <legend>Photo</legend>
+                <label for="photographer">Photo Credit</label>
+                <input type="text" name="photographer" value=" " required="">
+    
+                <label for="photo_upload">Upload New Photo</label>
+                <input type="file" name="photo_upload" id="photo_upload">
+    
+                <label for="photo_source">Photo Preview</label> 
+                <img id="upload_preview" src=" " alt="No Photo Selected">
+            <input id="upload_source" type="text" name="photo_source" value="" readonly="readonly">
+            </fieldset>
+    
+            <button class="button" type="submit">Save Bird</button>
+
+        <script>
+
+            //From Example Site
+            const fileInput = document.querySelector('#photo_upload');
+            if (fileInput) {
+                fileInput.onchange = evt => {
+                    const [file] = fileInput.files
+                    if (file) {
+                        document.querySelector('#upload_preview').src = URL.createObjectURL(file);
+                        document.querySelector('#upload_source').value = file.name;
+                    }
+                }
+            }
+        </script>
+        </form>
+
+
+    </div>
+
+
+
+
+</main>
